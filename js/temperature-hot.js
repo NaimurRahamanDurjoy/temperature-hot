@@ -11,7 +11,13 @@ const searchTemperature = () => {
         .then(data => displayTemperature(data))
 }
 
+// code optimization
+const setInnerText = (id, text) => {
+    document.getElementById(id).innerText = text;
+}
+
 const displayTemperature = temperature => {
+  /*   
     // Tag Location
     const city = document.getElementById('city-name');
     const temperatureTag = document.getElementById('temperature');
@@ -20,6 +26,11 @@ const displayTemperature = temperature => {
     city.innerText = temperature.name;
     temperatureTag.innerText = temperature.main.temp;
     condition.innerText = temperature.weather[0].main;
+ */
+
+    setInnerText('city-name', temperature.name);
+    setInnerText('temperature', temperature.main.temp);
+    setInnerText('condition', temperature.weather[0].main);
 
     // Weather icon
     const imgIcon = `https://openweathermap.org/img/wn/${temperature.weather[0].icon}@2x.png`;
